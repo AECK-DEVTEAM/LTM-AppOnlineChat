@@ -1,0 +1,10 @@
+D:\C#\TCP_Private_Server\TCP_Private_Server\bin\Debug\TCP_Private_Server.exe
+D:\C#\TCP_Private_Server\TCP_Private_Server\bin\Debug\TCP_Private_Server.pdb
+D:\C#\TCP_Private_Server\TCP_Private_Server\obj\Debug\TCP_Private_Server.csproj.AssemblyReference.cache
+D:\C#\TCP_Private_Server\TCP_Private_Server\obj\Debug\TCP_Private_Server.Form_About.resources
+D:\C#\TCP_Private_Server\TCP_Private_Server\obj\Debug\TCP_Private_Server.Form_Main.resources
+D:\C#\TCP_Private_Server\TCP_Private_Server\obj\Debug\TCP_Private_Server.Properties.Resources.resources
+D:\C#\TCP_Private_Server\TCP_Private_Server\obj\Debug\TCP_Private_Server.csproj.GenerateResource.cache
+D:\C#\TCP_Private_Server\TCP_Private_Server\obj\Debug\TCP_Private_Server.csproj.CoreCompileInputs.cache
+D:\C#\TCP_Private_Server\TCP_Private_Server\obj\Debug\TCP_Private_Server.exe
+D:\C#\TCP_Private_Server\TCP_Private_Server\obj\Debug\TCP_Private_Server.pdb
