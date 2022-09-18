@@ -44,8 +44,12 @@ namespace TCP_Private_Client
             this.button_CapNhatDanhSach = new System.Windows.Forms.Button();
             this.listBox_UserOnline = new System.Windows.Forms.ListBox();
             this.label_Private = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button_NewGroup = new System.Windows.Forms.Button();
+            this.listBox_Group = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_Send
@@ -57,16 +61,13 @@ namespace TCP_Private_Client
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.fileToolStripMenuItem, this.helpToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
@@ -78,8 +79,7 @@ namespace TCP_Private_Client
             // 
             // helpToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             // 
@@ -92,14 +92,14 @@ namespace TCP_Private_Client
             // label_UserName
             // 
             resources.ApplyResources(this.label_UserName, "label_UserName");
-            this.label_UserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label_UserName.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (192)))));
             this.label_UserName.Name = "label_UserName";
             // 
             // lblInstructions
             // 
             resources.ApplyResources(this.lblInstructions, "lblInstructions");
             this.lblInstructions.BackColor = System.Drawing.Color.Transparent;
-            this.lblInstructions.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.lblInstructions.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (192)))));
             this.lblInstructions.Name = "lblInstructions";
             // 
             // textBox_Send
@@ -145,8 +145,30 @@ namespace TCP_Private_Client
             // label_Private
             // 
             resources.ApplyResources(this.label_Private, "label_Private");
-            this.label_Private.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label_Private.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (192)))));
             this.label_Private.Name = "label_Private";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button_NewGroup);
+            this.groupBox2.Controls.Add(this.listBox_Group);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // button_NewGroup
+            // 
+            resources.ApplyResources(this.button_NewGroup, "button_NewGroup");
+            this.button_NewGroup.Name = "button_NewGroup";
+            this.button_NewGroup.UseVisualStyleBackColor = true;
+            this.button_NewGroup.Click += new System.EventHandler(this.button_NewGroup_Click);
+            // 
+            // listBox_Group
+            // 
+            this.listBox_Group.FormattingEnabled = true;
+            resources.ApplyResources(this.listBox_Group, "listBox_Group");
+            this.listBox_Group.Name = "listBox_Group";
+            this.listBox_Group.SelectedIndexChanged += new System.EventHandler(this.listBox_Group_SelectedIndexChanged);
             // 
             // Form_Main
             // 
@@ -154,6 +176,7 @@ namespace TCP_Private_Client
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label_Private);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox_Status);
@@ -170,10 +193,19 @@ namespace TCP_Private_Client
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.ListBox listBox_Group;
+
+        private System.Windows.Forms.Button button_NewGroup;
+
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ListBox listBox1;
 
         #endregion
 

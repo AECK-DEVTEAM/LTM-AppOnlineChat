@@ -16,6 +16,7 @@ namespace TCP_Private_Server
     {
         const int PORT_NUM = 2010;
         private Hashtable clients = new Hashtable();
+        private Hashtable groups = new Hashtable();
         private TcpListener listener;
         private Thread listenerThread;
         public Form_Main()
@@ -94,16 +95,81 @@ namespace TCP_Private_Server
                 case "CHAT":
                     SendChat(dataArray[1], sender);
                     break;
+                case "CHATGROUP":
+                    UpdateStatus("Chat group: " +data);
+                    SendChatGroup(dataArray[1], dataArray[2], sender);
+                    break;
                 case "DISCONNECT":
                     DisconnectUser(sender);
                     break;
                 case "REQUESTUSERS":
                     ListUsers(sender);
                     break;
+                case "NEWGROUP":
+                    NewGroup(dataArray[1], sender);
+                    break;
                 default:
                     UpdateStatus("Unknown message:" + data);
                     break;
             }
+        }
+
+        private void SendChatGroup(string header, string message, UserConnection sender)
+        {
+            string groupId = Helper.ParseAttribute(header,"Id");
+
+            if (this.groups.Contains(groupId))
+            {
+                Group group = (Group) this.groups[groupId];
+                var status = string.Format("{0}|{1}: {2}", group.name, sender.Name, message);
+                UpdateStatus(status);
+
+                foreach (DictionaryEntry entry in group.clients)
+                {
+                    UserConnection userConnection = (UserConnection) entry.Value;
+                    UpdateStatus("nghi3: " + userConnection.Name + "____" + sender.Name);
+                    // if (userConnection.Name != sender.Name)
+                    {
+                        string chat = string.Format("CHATGROUP|GroupId={0},GroupName={1},SenderName={2}|{3}", groupId, group.name, sender.Name, message);
+                        userConnection.SendData(chat);
+                    }
+                }
+                
+            }
+        }
+
+        private void NewGroup(string data, UserConnection sender)
+        {
+            UpdateStatus("New group request" );
+
+            // init group
+            Group group = new Group();
+            group.id = groups.Count.ToString();
+            group.name = Helper.ParseAttribute(data, "Name");
+            var membersRaw = Helper.ParseAttribute(data, "Members");
+            UpdateStatus("Nghi M: " + membersRaw);
+            var members = Helper.ParseArray(membersRaw);
+            foreach (var member in members)
+            {
+                if (this.clients.ContainsKey(member))
+                {
+                    group.clients.Add(member, this.clients[member]);
+                }
+            }
+            
+            // add group to data base
+            groups.Add(group.id, group);
+            
+            // reply to member
+            foreach (DictionaryEntry entry in group.clients)
+            {
+                var userConnection = (UserConnection) entry.Value;
+                var reply = string.Format("JOINGROUP|Id={0},Name={1}", group.id, group.name);
+                // UpdateStatus("Nghi R: " + reply);
+                ReplyToSender(reply, userConnection);
+            }
+            
+            UpdateStatus("New group created: " + group.name + " - " + data);
         }
 
         /* This subroutine checks to see if username already exists in the clients 
